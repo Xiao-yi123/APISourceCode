@@ -1,4 +1,5 @@
 <?php
+include '../black.php';
 
 //允许跨域
 header("Access-Control-Allow-Origin:*");
