@@ -6,3 +6,4 @@
 public/install/install.lock
 runtime
 vendor
+.composer.lock

@@ -14,6 +14,7 @@ class Index extends IndexController
     }
     public function index()
     {
+        halt(config_path());
         $siteInfo = Db::name('setup')->field('title,keywords,desc,baidu,css,js')->select()[0];
         $apiList = Db::name('info')->field('id,name,doc')->order('id asc')->select();
         $postList = Db::name('post')->field('id,title,time')->order('id desc')->limit(10)->select();
