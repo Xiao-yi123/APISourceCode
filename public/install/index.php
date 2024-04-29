@@ -16,7 +16,7 @@ $config = [
 
     'sqlName'       => 'api',             // 安装的sql文件名，同该文件同级的sql文件名相同
     'tableName'     => 'api_',                  // 安转的sql文件中的表名前缀，该项是被用户输入替换的
-    'databaseUrl'   => config_path().'database.php',    // db.php安装地址
+    'databaseUrl'   => '../../database.php',    // db.php安装地址
 
     'account'       => 'admin',            // 安装成功后的 登录账号
     'password'      => '123456'                 // 安装成功后的 登录密码
