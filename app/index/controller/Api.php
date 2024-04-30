@@ -3,7 +3,7 @@
 namespace app\index\controller;
 
 use app\common\constants\IndexController;
-use app\Index\service\APIService;
+use app\index\service\APIService;
 
 class Api extends IndexController
 {

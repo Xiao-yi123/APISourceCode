@@ -1,7 +1,7 @@
 <?php
 declare (strict_types = 1);
 
-namespace app\Index\service;
+namespace app\index\service;
 
 use think\App;
 use think\facade\Db;

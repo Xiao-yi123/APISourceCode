@@ -16,6 +16,8 @@ location / {
 }
 ```
 # 食用方法
+> 本项目使用 Composer 来管理项目依赖。因此，在使用 EasyAdmin 之前，请确保你的机器已经安装了 Composer。
+
 ## 通过通过git下载安装包，composer安装依赖包，install安装
 ```shell
 第一步：下载安装包
