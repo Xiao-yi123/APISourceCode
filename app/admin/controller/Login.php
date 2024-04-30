@@ -9,7 +9,7 @@ use think\facade\Db;
 class Login extends AdminController
 {
     protected $middleware = [
-        \app\Admin\middleware\CheckIsLogin::class 	=> ['except' 	=> ['index','verify']],
+        \app\admin\middleware\CheckIsLogin::class 	=> ['except' 	=> ['index','verify']],
     ];
 
     protected function initialize()

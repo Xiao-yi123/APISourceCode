@@ -1,7 +1,7 @@
 <?php
 declare (strict_types = 1);
 
-namespace app\Admin\middleware;
+namespace app\admin\middleware;
 
 use think\facade\Session;
 

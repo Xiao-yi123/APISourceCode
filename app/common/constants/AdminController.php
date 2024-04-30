@@ -9,7 +9,7 @@ class AdminController extends Controller
      * @var array
      */
     protected $middleware = [
-        \app\Admin\middleware\CheckIsLogin::class  =>  []
+        \app\admin\middleware\CheckIsLogin::class  =>  []
     ];
 
     /**
