@@ -14,8 +14,7 @@ class APIService
     {
         ini_set('display_errors', (string)0);
         $file = '../api/black.data';
-        $test = explode('/',request()->server("PHP_SELF"));
-        $path = $test[count($test)-1];
+        $path = request()->param('name');
 
         $Conunt = $this->getCount($path);
         if($Conunt['code'] == 201){
