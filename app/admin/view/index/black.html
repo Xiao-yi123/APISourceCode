@@ -57,7 +57,7 @@
             value: reValue,
             type: reType
         };
-        $.post("/{$appName}/index/postBlack", reData, function(data) {
+        $.post("/{$adminName}/index/postBlack", reData, function(data) {
             if (data.code == 200) {
                 mdui.snackbar({
                     message: data.msg,

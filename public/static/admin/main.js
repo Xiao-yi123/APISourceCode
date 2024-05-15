@@ -1,5 +1,4 @@
-var inst = new mdui.Drawer('#drawer'),
-    appName = '/admin.php';
+var inst = new mdui.Drawer('#drawer');
 
 mdui.$('#search').on('keyup', function(e) {
     var key = e.which;
@@ -7,7 +6,7 @@ mdui.$('#search').on('keyup', function(e) {
         var value = this.value;
         console.log(value);
         if (value) {
-            $.get(appName + "/index/apiSearchlist?keyword=" + value, function(data) {
+            $.get(`${adminName}/index/apiSearchlist?keyword=${value}`, function(data) {
                 $(".loading").show();
                 if (data.code == 201) {
                     mdui.snackbar({
@@ -16,7 +15,7 @@ mdui.$('#search').on('keyup', function(e) {
                     $(".loading").hide();
 
                 } else {
-                    window.location.href = appName + '/index/apiSearch' + '?keyword=' + value;
+                    window.location.href = `${adminName}/index/apiSearch?keyword=${value}`;
                 }
             });
         } else {
@@ -45,11 +44,10 @@ mdui.$('#getInfo').on('click', function() {
         var apiType = 'get';
     }
 
-    var apiUrl = window.location.host +'/api/' +path + "/";
-    console.log(apiUrl,apiType,apiValue)
+    var apiUrl = `${window.location.host}/api/${path}`;
     $(".loading").show();
     $.ajax({
-        url: '/api/' +path,
+        url: `/api/${path}`,
         type: apiType,
         data: apiValue,
         success: function(data) {
@@ -65,7 +63,7 @@ mdui.$('#getInfo').on('click', function() {
 
 mdui.$('#upDate').on('click', function() {
     $(".loading").show();
-    $.get("/admin.php/index/siteUpdate", function(data) {
+    $.get(`/${adminName}/index/siteUpdate`, function(data) {
         $(".loading").hide();
         if (data.code == 201) {
             mdui.snackbar({
@@ -93,7 +91,7 @@ mdui.$('#upDate').on('click', function() {
 });
 
 $("#getUserinfo").click(function() {
-    $.get("/admin.php/index/editUserinfo", function(data) {
+    $.get(`/${adminName}/index/editUserinfo`, function(data) {
         if (data.code == 200) {
             $("#username").val(data.data.username);
             $("#email").val(data.data.email);
@@ -109,7 +107,7 @@ $("#putUserinfo").click(function() {
     var username = $("#username").val();
     var password = $("#password").val();
     var email = $("#email").val();
-    $.post("/admin.php/index/editUserinfo", {
+    $.post(`/${adminName}/index/editUserinfo`, {
         username: username,
         password: password,
         email: email
@@ -128,26 +126,25 @@ $("#putUserinfo").click(function() {
 
 
 function apiEdit(id) {
-    window.location.href = appName + '/api/apiEdit?id=' + id;
+    window.location.href = `/${adminName}/api/apiEdit?id=${id}`;
 }
 
 function sortEdit(id) {
-    window.location.href = appName + '/sort/sortEdit?id=' + id;
+    window.location.href = `/${adminName}/sort/sortEdit?id=${id}`;
 }
 
 function postEdit(id) {
-
-    window.location.href = appName + '/post/postEdit?id=' + id;
+    window.location.href = `/${adminName}/post/postEdit?id=${id}`;
 }
 
 function reEdit(id) {
-    window.location.href = appName + '/index/blackEdit?id=' + id;
+    window.location.href = `/${adminName}/index/blackEdit?id=${id}`;
 }
 
 function apiDelete(id) {
     mdui.confirm('确定删除吗？', function() {
         $.ajax({
-            url: appName + "/api/apiOper",
+            url: `/${adminName}/api/apiOper`,
             type: "post",
             data: { id: id },
             dataType: "json",
@@ -172,7 +169,7 @@ function apiDelete(id) {
 function sortDelete(id) {
     mdui.confirm('确定删除吗？', function() {
         $.ajax({
-            url: appName + "/sort/sortOper",
+            url: `/${adminName}/sort/sortOper`,
             type: "post",
             data: { id: id },
             dataType: "json",
@@ -197,7 +194,7 @@ function sortDelete(id) {
 function postDelete(id) {
     mdui.confirm('确定删除吗？', function() {
         $.ajax({
-            url: appName + "/post/postOper",
+            url: `${adminName}/post/postOper`,
             type: "post",
             data: { id: id },
             dataType: "json",
@@ -222,7 +219,7 @@ function postDelete(id) {
 function reDelete(id) {
     mdui.confirm('确定删除吗？', function() {
         $.ajax({
-            url: appName + "/index/blackOper",
+            url: `${adminName}/index/blackOper`,
             type: "post",
             data: { id: id },
             dataType: "json",
@@ -247,7 +244,7 @@ function reDelete(id) {
 function logout() {
     mdui.confirm('确定注销吗？', function() {
         $.ajax({
-            url: appName + "/index/logout",
+            url: `${adminName}/index/logout`,
             type: "get",
             dataType: "json",
             success: function(json) {

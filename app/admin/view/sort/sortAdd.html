@@ -48,7 +48,7 @@
             icon: sortIcon,
             type: sortType,
         };
-        $.post("/{$appName}/sort/sortPostadd", sortData, function(data) {
+        $.post("/{$adminName}/sort/sortPostadd", sortData, function(data) {
             if (data.code == 200) {
                 mdui.snackbar({
                     message: data.msg,

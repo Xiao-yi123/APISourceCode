@@ -27,7 +27,7 @@
         <div class="form-group">
             <p class="name">验证码</p>
             <div class="checkcode">
-                <img src="/admin.php/verify" height="40" id='yzm' onclick="this.src=this.src+'?'+Math.random()" />
+                <img src="/{$adminName}/verify" height="40" id='yzm' onclick="this.src=this.src+'?'+Math.random()" />
                 <input name="checkcode" id="code" type="text" placeholder="请输入验证码" required>
             </div>
         </div>
@@ -63,7 +63,7 @@
                             message: res.msg,
                             onOpen: function() {
                                 setTimeout(function() {
-                                    window.location.href = '/{$appName}';
+                                    window.location.href = '/{$adminName}';
                                 }, 1000);
                             }
                         });

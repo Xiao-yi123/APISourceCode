@@ -77,7 +77,7 @@
     $('.mdui-container').hide();
     $('.loading').show();
     $.ajax({
-        url: '{:url("admin/index/getCount")}',
+        url: '{:url("index/getCount")}',
         type: 'post',
         dataType: 'json',
         success: function(data) {

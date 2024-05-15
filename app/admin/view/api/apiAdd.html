@@ -94,7 +94,7 @@
 <script type="text/javascript">
     $('.mdui-container').hide();
     $('.loading').show();
-    $.get("/{$appName}/sort/getList", function(data) {
+    $.get("/{$adminName}/sort/getList", function(data) {
         var inst = new mdui.Select('#apiSort');
         if (data.code == 200) {
             for (var i = 0; i < data.data.data.length; i++) {
@@ -150,7 +150,7 @@
             sort: apiSort,
         };
         console.log(apiData);
-        $.post("/{$appName}/api/apiPostadd", apiData, function(data) {
+        $.post("/{$adminName}/api/apiPostadd", apiData, function(data) {
             if (data.code == 200) {
                 mdui.snackbar({
                     message: data.msg,

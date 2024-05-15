@@ -5166,7 +5166,7 @@
   }
 
   // Passed to option handlers when there is no old value.
-  var Init = CodeMirror.Init = {toString: function(){return "CodeMirror.Init";}};
+  var Init = CodeMirror.Init = {toString: function(){return "CodeMirror.InitAdmin";}};
 
   // These two are, on init, called from the constructor because they
   // have to be initialized before the editor can start at all.

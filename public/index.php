@@ -26,7 +26,8 @@ if (!is_file(ROOT_PATH . 'install' . DS . 'install.lock')) {
 // 执行HTTP应用并响应
 $http = (new App())->http;
 
-$response = $http->name('index')->run();
+//$response = $http->name('index')->run();
+$response = $http->run();
 
 $response->send();
 

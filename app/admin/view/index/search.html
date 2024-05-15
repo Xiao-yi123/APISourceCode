@@ -27,7 +27,7 @@
     $('.mdui-container').hide();
     $(".loading").show();
     $.ajax({
-        url: "{:url('/index/apiSearchlist')}" + "?keyword=" + getQueryVariable("keyword") + "&page=" + getQueryVariable("page"),
+        url: "{:url('index/apiSearchlist')}" + "?keyword=" + getQueryVariable("keyword") + "&page=" + getQueryVariable("page"),
         type: "get",
         dataType: "json",
         success: function(json) {

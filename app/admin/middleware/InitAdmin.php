@@ -4,9 +4,9 @@ declare (strict_types = 1);
 namespace app\admin\middleware;
 
 use think\facade\Cache;
-use think\facade\Session;
+use think\facade\View;
 
-class CheckIsLogin
+class InitAdmin
 {
     /**
      * 处理请求
@@ -17,10 +17,11 @@ class CheckIsLogin
      */
     public function handle($request, \Closure $next)
     {
-        $adminName = Cache::get('adminName');
-        if (empty(Session::get('adminid')) || empty(Session::get('adminname'))) {
-            return redirect("/{$adminName}/login/index");
+        if (!Cache::get('adminName')) {
+            $adminKeys = array_keys(config('app.app_map'), 'admin');
+            Cache::set("adminName",$adminKeys[0]);
         }
+        View::assign('adminName',Cache::get('adminName'));
 
         return $next($request);
     }

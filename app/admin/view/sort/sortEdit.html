@@ -31,7 +31,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    $.get("/{$appName}/sort/sortOper?id=" + getQueryVariable('id'), function(data) {
+    $.get("/{$adminName}/sort/sortOper?id=" + getQueryVariable('id'), function(data) {
         $(".loading").show();
         if (data.code == 200) {
             $(".loading").hide();
@@ -59,7 +59,7 @@
             type: sortType,
             id: getQueryVariable('id')
         };
-        $.post("/{$appName}/sort/sortUpdate", sortData, function(data) {
+        $.post("/{$adminName}/sort/sortUpdate", sortData, function(data) {
             if (data.code == 200) {
                 mdui.snackbar({
                     message: data.msg,

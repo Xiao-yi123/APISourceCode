@@ -10,11 +10,6 @@
 // +----------------------------------------------------------------------
 use think\facade\Route;
 
-Route::group('/admin/',function (){
-//    首页
-    Route::rule("",'Admin/index');
-
-});
 // 验证码
 Route::group('/verify',function (){
     Route::rule("",'login/verify');

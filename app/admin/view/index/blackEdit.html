@@ -23,7 +23,8 @@
     </div>
 </div>
 <script type="text/javascript">
-    $.get("/{$appName}/index/blackOper?id=" + getQueryVariable('id'), function(data) {
+    $.get("/{$adminName}/index/blackOper?id=" + getQueryVariable('id'), function(data) {
+        console.log('fs')
         $(".loading").show();
         if (data.code == 200) {
             $(".loading").hide();
@@ -48,7 +49,7 @@
             type: reType,
             id: getQueryVariable('id')
         };
-        $.post("/{$appName}/index/blackUpdate", reData, function(data) {
+        $.post("/{$adminName}/index/blackUpdate", reData, function(data) {
             if (data.code == 200) {
                 mdui.snackbar({
                     message: data.msg,

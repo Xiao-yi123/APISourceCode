@@ -89,7 +89,7 @@
 <script type="text/javascript">
     $('.mdui-container').hide();
     $('.loading').show();
-    $.get("/{$appName}/sort/getList", function(data) {
+    $.get("/{$adminName}/sort/getList", function(data) {
         var inst = new mdui.Select('#apiSort');
         if (data.code == 200) {
             for (var i = 0; i < data.data.data.length; i++) {
@@ -106,7 +106,7 @@
         }
     });
 
-    $.get("/{$appName}/api/apiOper?id=" + getQueryVariable('id'), function(data) {
+    $.get("/{$adminName}/api/apiOper?id=" + getQueryVariable('id'), function(data) {
         if (data.code == 200) {
             $('.mdui-select-selected').eq(0).text(data.data.type);
             $('#apiIcon').val(data.data.icon);
@@ -170,7 +170,7 @@
             id: apiId,
             sort: apiSort,
         };
-        $.post("/{$appName}/api/apiUpdate", apiData, function(data) {
+        $.post("/{$adminName}/api/apiUpdate", apiData, function(data) {
             if (data.code == 200) {
                 mdui.snackbar({
                     message: data.msg,

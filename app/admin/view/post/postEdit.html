@@ -29,7 +29,7 @@
 <script type="text/javascript">
     $('.mdui-container').hide();
     $('.loading').show();
-    $.get("/{$appName}/sort/getList", function(data) {
+    $.get("/{$adminName}/sort/getList", function(data) {
         var inst = new mdui.Select('#postSort');
         if (data.code == 200) {
             for (var i = 0; i < data.data.data.length; i++) {
@@ -46,7 +46,7 @@
         }
     });
 
-    $.get("/{$appName}/post/postOper?id=" + getQueryVariable('id'), function(data) {
+    $.get("/{$adminName}/post/postOper?id=" + getQueryVariable('id'), function(data) {
         if (data.code == 200) {
             $('.mdui-select-selected').eq(0).text(data.data.sort);
             $('#postTitle').val(data.data.title);
@@ -82,8 +82,7 @@
             content: postContent,
             id: postId
         };
-        console.log(postData);
-        $.post("/{$appName}/post/postUpdate", postData, function(data) {
+        $.post("/{$adminName}/post/postUpdate", postData, function(data) {
             if (data.code == 200) {
                 mdui.snackbar({
                     message: data.msg,

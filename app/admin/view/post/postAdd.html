@@ -29,7 +29,7 @@
 <script type="text/javascript">
     $('.mdui-container').hide();
     $('.loading').show();
-    $.get("/{$appName}/sort/getList", function(data) {
+    $.get("/{$adminName}/sort/getList", function(data) {
         var inst = new mdui.Select('#postSort');
         if (data.code == 200) {
             for (var i = 0; i < data.data.data.length; i++) {
@@ -68,7 +68,7 @@
             sort: postSort,
             content: postContent
         };
-        $.post("/{$appName}/post/articleAdd", postData, function(data) {
+        $.post("/{$adminName}/post/articleAdd", postData, function(data) {
             if (data.code == 200) {
                 mdui.snackbar({
                     message: data.msg,
