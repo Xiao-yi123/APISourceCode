@@ -25,6 +25,5 @@ return [
     // 字符替换
     'tpl_replace_string' => [
         '__STATIC__' => '/static',
-
     ]
 ];

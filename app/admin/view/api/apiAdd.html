@@ -149,7 +149,6 @@
             detail: apiDetail,
             sort: apiSort,
         };
-        console.log(apiData);
         $.post("/{$adminName}/api/apiPostadd", apiData, function(data) {
             if (data.code == 200) {
                 mdui.snackbar({

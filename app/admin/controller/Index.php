@@ -5,8 +5,14 @@ use app\common\constants\AdminController;
 use think\facade\Db;
 use think\facade\Session;
 
+/**
+ *后台 index
+ */
 class Index extends AdminController
 {
+    /**首页
+     * @return mixed
+     */
     public function index()
     {
         $title = '仪表盘';
@@ -15,6 +21,9 @@ class Index extends AdminController
         ]);
     }
 
+    /**退出登录
+     * @return \think\response\Json
+     */
     public function logout()
     {
         Session::delete('adminid');
@@ -22,6 +31,9 @@ class Index extends AdminController
         return returnJsonData(200,'正在退出',null);
     }
 
+    /**检测更新
+     * @return \think\response\Json
+     */
     public function siteUpdate()
     {
         $title = '检测更新';
@@ -34,6 +46,9 @@ class Index extends AdminController
         }
     }
 
+    /**站点设置
+     * @return mixed
+     */
     public function setup()
     {
         $title = '站点设置';
@@ -41,12 +56,22 @@ class Index extends AdminController
         return $this->fetch('setup', ['title' => $title]);
     }
 
+    /**获取站点设置
+     * @return \think\response\Json
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\DbException
+     * @throws \think\db\exception\ModelNotFoundException
+     */
     function getSetup()
     {
         $data = Db::name('setup')->select()[0];
         return returnJsonData(200, '获取成功', $data);
     }
 
+    /**设置设点设置
+     * @return \think\response\Json
+     * @throws \think\db\exception\DbException
+     */
     function setSetup()
     {
         $data = input('post.');
@@ -58,6 +83,12 @@ class Index extends AdminController
         }
     }
 
+    /**获取相关信息的数量
+     * @return \think\response\Json
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\DbException
+     * @throws \think\db\exception\ModelNotFoundException
+     */
     public function getCount()
     {
         $info = Db::name('info')->count();
@@ -75,6 +106,12 @@ class Index extends AdminController
         return returnJsonData(200, '获取成功', $data);
     }
 
+    /**获取日志信息
+     * @return \think\response\Json
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\DbException
+     * @throws \think\db\exception\ModelNotFoundException
+     */
     public function getNew10()
     {
         $log = Db::name('setup')->field('log')->select()->toArray()[0];
@@ -82,6 +119,7 @@ class Index extends AdminController
         if (empty($file)) {
             return returnJsonData(404, '暂无数据', null);
         }
+
         $fp = @fopen($file,"r");
         if(!$fp){
             return returnJsonData(201, '获取失败', null);
@@ -112,6 +150,12 @@ class Index extends AdminController
         return returnJsonData(200, '获取成功', $data);
     }
 
+    /**编辑用户信息
+     * @return \think\response\Json
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\DbException
+     * @throws \think\db\exception\ModelNotFoundException
+     */
     public function editUserinfo()
     {
         if(\request()->isPost()){
@@ -138,12 +182,19 @@ class Index extends AdminController
         }
     }
 
+    /**接口搜索
+     * @return mixed
+     */
     public function apiSearch()
     {
         $title = '接口搜索';
         return $this->fetch('search', ['title' => $title]);
     }
 
+    /**接口搜索列表
+     * @return \think\response\Json
+     * @throws \think\db\exception\DbException
+     */
     public function apiSearchlist()
     {
         $keyword = input('keyword');
@@ -160,12 +211,18 @@ class Index extends AdminController
 
     }
 
+    /**请求限制
+     * @return mixed
+     */
     public function black()
     {
         $title = '请求限制';
         return $this->fetch('black', ['title' => $title]);
     }
 
+    /**添加请求限制
+     * @return \think\response\Json
+     */
     public function postBlack()
     {
         $data = input('post.');
@@ -182,16 +239,13 @@ class Index extends AdminController
             return returnJsonData(201, '请输入限制目标', null);
         }
     }
-    public function blacklist()
-    {
-        $data = Db::name('black')->order('id desc')->paginate(10);
-        if (count($data) > 0) {
-            return returnJsonData(200, '获取成功', $data);
-        } else {
-            return returnJsonData(201, '没有数据', null);
-        }
-    }
 
+    /**展示请求限制
+     * @return \think\response\Json
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\DbException
+     * @throws \think\db\exception\ModelNotFoundException
+     */
     public function blackOper()
     {
         $id = input('id');
@@ -213,6 +267,11 @@ class Index extends AdminController
         }
     }
 
+
+    /**获取请求限制
+     * @return \think\response\Json
+     * @throws \think\db\exception\DbException
+     */
     public function getList()
     {
         $data = Db::name('black')->order('id asc')->paginate(10);
@@ -223,12 +282,19 @@ class Index extends AdminController
         }
     }
 
+    /**编辑请求限制
+     * @return mixed
+     */
     public function blackEdit()
     {
         $title = '编辑限制';
         return $this->fetch('blackEdit', ['title' => $title]);
     }
 
+    /**更新请求限制
+     * @return \think\response\Json
+     * @throws \think\db\exception\DbException
+     */
     public function blackUpdate()
     {
         $data = input('post.');
@@ -245,8 +311,14 @@ class Index extends AdminController
         }
     }
 
+    /**插入数据
+     * @return void
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\DbException
+     * @throws \think\db\exception\ModelNotFoundException
+     */
     public function insertData(){
-        $config='black.data';
+        $config=base_path().'../api/black.data';
         $ilist = Db::name('black')->where('type',1)->field('value')->select();
         $rlist = Db::name('black')->where('type',0)->field('value')->select();
         $fp=fopen($config,'w');

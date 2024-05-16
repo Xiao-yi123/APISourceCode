@@ -45,11 +45,13 @@ class Login extends AdminController
                 return returnJsonData(201,'密码不能为空',null);
             }
             $info = Db::name('user')->where('username',$username)->find();
+
             if(empty($info))
             {
-                return returnJsonData(201,'信息有误',null);
+                return returnJsonData(201,'信息有误',$username);
             }
             $pass = hashPwd($password);
+
             if($pass != $info['password'])
             {
                 return returnJsonData(201,'信息有误',null);

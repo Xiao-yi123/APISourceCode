@@ -23,12 +23,12 @@ return [
     //开启自动多应用
     'auto_multi_app'    =>  true,
     // 开启应用快速访问
-    'app_express'      => false,
+    'app_express'      => true,
     // 默认时区
     'default_timezone' => 'Asia/Shanghai',
     // 应用映射（自动多应用模式有效）
     'app_map'          => [
-        Env::get('app.adminName', 'hello')=>  'admin'
+        Env::get('app.adminName', 'hello')=>  'admin',
     ],
     // 后台别名
     'admin_alias_name' => 'admin',

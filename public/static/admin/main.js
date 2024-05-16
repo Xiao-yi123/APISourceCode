@@ -6,7 +6,7 @@ mdui.$('#search').on('keyup', function(e) {
         var value = this.value;
         console.log(value);
         if (value) {
-            $.get(`${adminName}/index/apiSearchlist?keyword=${value}`, function(data) {
+            $.get(`/${adminName}/index/apiSearchlist?keyword=${value}`, function(data) {
                 $(".loading").show();
                 if (data.code == 201) {
                     mdui.snackbar({
@@ -15,7 +15,7 @@ mdui.$('#search').on('keyup', function(e) {
                     $(".loading").hide();
 
                 } else {
-                    window.location.href = `${adminName}/index/apiSearch?keyword=${value}`;
+                    window.location.href = `/${adminName}/index/apiSearch?keyword=${value}`;
                 }
             });
         } else {
@@ -194,7 +194,7 @@ function sortDelete(id) {
 function postDelete(id) {
     mdui.confirm('确定删除吗？', function() {
         $.ajax({
-            url: `${adminName}/post/postOper`,
+            url: `/${adminName}/post/postOper`,
             type: "post",
             data: { id: id },
             dataType: "json",
@@ -219,7 +219,7 @@ function postDelete(id) {
 function reDelete(id) {
     mdui.confirm('确定删除吗？', function() {
         $.ajax({
-            url: `${adminName}/index/blackOper`,
+            url: `/${adminName}/index/blackOper`,
             type: "post",
             data: { id: id },
             dataType: "json",
@@ -244,7 +244,7 @@ function reDelete(id) {
 function logout() {
     mdui.confirm('确定注销吗？', function() {
         $.ajax({
-            url: `${adminName}/index/logout`,
+            url: `/${adminName}/index/logout`,
             type: "get",
             dataType: "json",
             success: function(json) {
