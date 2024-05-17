@@ -28,7 +28,7 @@ return [
     'default_timezone' => 'Asia/Shanghai',
     // 应用映射（自动多应用模式有效）
     'app_map'          => [
-        Env::get('app.adminName', 'hello')=>  'admin',
+        Env::get('app.adminName', 'admin')=>  'admin',
     ],
     // 后台别名
     'admin_alias_name' => 'admin',
@@ -38,7 +38,7 @@ return [
     'deny_app_list'    => [],
 
     // 异常页面的模板文件
-//    'exception_tmpl'         => 'app/404.html',
+    'exception_tmpl'         => 'app/404.html',
 
     // 错误显示信息,非调试模式有效
     'error_message'          => '页面错误！请稍后再试～',
